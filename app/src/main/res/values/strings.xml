@@ -6,4 +6,5 @@
     <string name="dialog_confirm">Register</string>
     <string name="helper_username">Required</string>
     <string name="username">Username</string>
+    <string name="sp_username">username</string>
 </resources>

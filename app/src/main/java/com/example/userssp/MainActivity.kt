@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.userssp.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity(), IOnClickListener {
 
@@ -24,18 +25,26 @@ class MainActivity : AppCompatActivity(), IOnClickListener {
         val preferences = getPreferences(Context.MODE_PRIVATE)
 
         val isFirstTIme = preferences.getBoolean(getString(R.string.sp_first_time), true)
+        val spUsername = preferences.getString(getString(R.string.sp_username), "")
+
         Log.i("SP", "${getString(R.string.sp_first_time)} : $isFirstTIme")
+        Log.i("SP", "${getString(R.string.sp_username)} : $spUsername")
 
         if (isFirstTIme) {
-            MaterialAlertDialogBuilder(this).setTitle(R.string.dialog_title)
+            val dialogView = layoutInflater.inflate(R.layout.dialog_register, null)
+            MaterialAlertDialogBuilder(this).setTitle(R.string.dialog_title).setView(dialogView)
                 .setPositiveButton(
                     R.string.dialog_confirm
                 )
                 { _, _ ->
-                    preferences.edit().putBoolean(getString(R.string.sp_first_time), false)
-                        .commit()
-                }
-                .setNegativeButton("Cancel", null)
+                    val username =
+                        dialogView.findViewById<TextInputEditText>(R.id.etUsername).text.toString()
+                    with(preferences.edit()) {
+                        putBoolean(getString(R.string.sp_first_time), false)
+                            .commit()
+                        putString(getString(R.string.sp_username), username).apply()
+                    }
+                }.setCancelable(false)
                 .show()
         }
 
