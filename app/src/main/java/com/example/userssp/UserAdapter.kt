@@ -26,7 +26,7 @@ class UserAdapter(private val users: List<User>) : RecyclerView.Adapter<UserAdap
         val user = users[position]
         with(holder) {
             binding.tvOrder.text = (position + 1).toString()
-            binding.tvName.text = user.name
+            binding.tvName.text = user.fullName
             Glide.with(context).load(user.url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
