@@ -1,7 +1,9 @@
 package com.example.userssp
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.userssp.databinding.ActivityMainBinding
@@ -16,6 +18,11 @@ class MainActivity : AppCompatActivity(), IOnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        val preferences = getPreferences(Context.MODE_PRIVATE)
+
+        val isFirstTIme = preferences.getBoolean(getString(R.string.sp_first_time), false)
+        Log.i("SP", "${getString(R.string.sp_first_time)} : $isFirstTIme")
 
         userAdapter = UserAdapter(getUsers(), this)
         linearLayoutManager = LinearLayoutManager(this)
