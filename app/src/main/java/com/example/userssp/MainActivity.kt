@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        userAdapter = UserAdapter(mutableListOf())
+        userAdapter = UserAdapter(getUsers())
         linearLayoutManager = LinearLayoutManager(this)
 
         binding.recyclerView.apply {
@@ -25,4 +25,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun getUsers(): MutableList<User> {
+        val users = mutableListOf<User>()
+        val me = User(0, "Jesus", "Castillo", "")
+        //  PET - NAMES
+        val machina = User(1, "Machina", "Castillo", "")
+        val mimi = User(1, "Mimi", "Castillo", "")
+        val gringacho = User(1, "Gringacho", "Jesus", "")
+        val riqueza = User(1, "Riqueza", "Jesus", "")
+
+        users.add(me)
+        users.add(machina)
+        users.add(mimi)
+        users.add(gringacho)
+        users.add(riqueza)
+        return users
+    }
 }
