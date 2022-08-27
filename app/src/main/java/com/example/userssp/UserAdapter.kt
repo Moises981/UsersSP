@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.userssp.databinding.ItemUserAltBinding
-import com.example.userssp.databinding.ItemUserBinding
 
 class UserAdapter(private val users: List<User>, private val listener: IOnClickListener) :
     RecyclerView.Adapter<UserAdapter.ViewHolder>() {
@@ -31,9 +30,10 @@ class UserAdapter(private val users: List<User>, private val listener: IOnClickL
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user = users[position]
+        val userPosition = position + 1
         with(holder) {
             setListener(user, position)
-            binding.tvOrder.text = (position + 1).toString()
+            binding.tvOrder.text = userPosition.toString()
             binding.tvName.text = user.fullName
             Glide.with(context).load(user.url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

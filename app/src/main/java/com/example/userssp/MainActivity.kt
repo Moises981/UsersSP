@@ -1,7 +1,6 @@
 package com.example.userssp
 
 import android.content.Context
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -40,11 +39,13 @@ class MainActivity : AppCompatActivity(), IOnClickListener {
                         dialogView.findViewById<TextInputEditText>(R.id.etUsername).text.toString()
                     with(preferences.edit()) {
                         putBoolean(getString(R.string.sp_first_time), false)
-                            .commit()
+                            .apply()
                         putString(getString(R.string.sp_username), username).apply()
                     }
                     Toast.makeText(this, R.string.register_success, Toast.LENGTH_SHORT).show()
-                }.setCancelable(false)
+                }
+                .setNeutralButton(R.string.dialog_invited, null)
+                .setCancelable(false)
                 .show()
         }
 

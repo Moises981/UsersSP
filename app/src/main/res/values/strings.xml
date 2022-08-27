@@ -9,4 +9,5 @@
     <string name="sp_username">username</string>
     <string name="register_success">Registered</string>
     <string name="hint_username">""</string>
+    <string name="dialog_invited">Invited</string>
 </resources>
