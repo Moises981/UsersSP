@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dialog_register.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_user.xml" value="0.40206812652068125" />
+        <entry key="app/src/main/res/layout/item_user_alt.xml" value="0.1" />
       </map>
     </option>
   </component>

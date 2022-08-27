@@ -7,4 +7,6 @@
     <string name="helper_username">Required</string>
     <string name="username">Username</string>
     <string name="sp_username">username</string>
+    <string name="register_success">Registered</string>
+    <string name="hint_username">""</string>
 </resources>

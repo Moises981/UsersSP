@@ -25,10 +25,9 @@ class MainActivity : AppCompatActivity(), IOnClickListener {
         val preferences = getPreferences(Context.MODE_PRIVATE)
 
         val isFirstTIme = preferences.getBoolean(getString(R.string.sp_first_time), true)
-        val spUsername = preferences.getString(getString(R.string.sp_username), "")
+
 
         Log.i("SP", "${getString(R.string.sp_first_time)} : $isFirstTIme")
-        Log.i("SP", "${getString(R.string.sp_username)} : $spUsername")
 
         if (isFirstTIme) {
             val dialogView = layoutInflater.inflate(R.layout.dialog_register, null)
@@ -44,9 +43,22 @@ class MainActivity : AppCompatActivity(), IOnClickListener {
                             .commit()
                         putString(getString(R.string.sp_username), username).apply()
                     }
+                    Toast.makeText(this, R.string.register_success, Toast.LENGTH_SHORT).show()
                 }.setCancelable(false)
                 .show()
         }
+
+        Toast.makeText(
+            this,
+            "Welcome ${
+                preferences.getString(
+                    getString(R.string.sp_username),
+                    getString(R.string.hint_username)
+                )
+            }",
+            Toast.LENGTH_SHORT
+        ).show()
+
 
 
         userAdapter = UserAdapter(getUsers(), this)
